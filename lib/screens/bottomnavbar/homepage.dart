@@ -1,3 +1,4 @@
+import 'package:doctor/widgets/customappbar.dart';
 import 'package:flutter/material.dart';
 
 
@@ -64,45 +65,24 @@ Map<int, List> offers = {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: [
-            Container(
-              height: 200.0,
-              padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(20.0), bottomLeft: Radius.circular(20.0)),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xff00BBDC),
-                    Color(0xff03CBC8)
-                  ]
-                )
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(Icons.sort, color: Colors.white, size: 25.0),
-                  Text(
-                    'Cairo, Egypt\n Search for Doctors near to you',
-                    style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+            CustomAppBar(
+              200.0,
+              'Cairo, Egypt\n Search for Doctors near to you',
+              Container(
+                margin: EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  color: Colors.white24,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: ListTile(
+                  leading: Icon(Icons.search, color: Colors.white, size: 25.0),
+                  title: Text(
+                    'Search By Location',
+                    style: TextStyle(color: Colors.white, fontSize: 17.0, fontWeight: FontWeight.normal),
                   ),
-                  Container(
-                    margin: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white24,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: ListTile(
-                      leading: Icon(Icons.search, color: Colors.white, size: 25.0),
-                      title: Text(
-                        'Search By Location',
-                        style: TextStyle(color: Colors.white, fontSize: 17.0, fontWeight: FontWeight.normal),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
+              'Home'
             ),
             Container(
               height: 150.0,
