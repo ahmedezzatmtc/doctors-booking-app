@@ -1,4 +1,7 @@
+import 'package:doctor/screens/categoriesandoffers.dart';
+import 'package:doctor/screens/result.dart';
 import 'package:doctor/widgets/customappbar.dart';
+import 'package:doctor/widgets/homepageitem.dart';
 import 'package:flutter/material.dart';
 
 
@@ -130,6 +133,15 @@ Map<int, List> offers = {
         style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
       ),
       trailing: Icon(Icons.navigate_next, color: Colors.grey, size: 25.0),
+      onTap: () {
+        return Navigator.push(context, MaterialPageRoute(builder: (_) {
+          if(title == 'Suggested Doctors'){
+            return Result();
+          }else{
+            return CategoriesAndOffers(title);
+          }
+        }));
+      }
     );
   }
   scrollSection(Map<int, List> map) {
@@ -137,23 +149,7 @@ Map<int, List> offers = {
       scrollDirection: Axis.horizontal,
       itemCount: map.length,
       itemBuilder: (context, index){
-        return Container(
-          width: MediaQuery.of(context).size.width/2.5,
-          margin: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            image: DecorationImage(
-              image: NetworkImage(map[index][1]),
-              fit: BoxFit.fill,
-              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.color)
-            )
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            map[index][0],
-            style: TextStyle(color: Colors.black, fontSize: 25.0, fontWeight: FontWeight.bold),
-          ),
-        );
+        return HomePageItem(map, index);
       },
     );
   }
