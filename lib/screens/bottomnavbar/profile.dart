@@ -1,7 +1,6 @@
+import 'package:doctor/screens/bottomnavbar/drprofile.dart';
 import 'package:doctor/widgets/customappbar.dart';
 import 'package:flutter/material.dart';
-
-
 
 
 class Profile extends StatefulWidget {
@@ -19,28 +18,42 @@ class _ProfileState extends State<Profile> {
           scrollDirection: Axis.vertical,
           children: [
             CustomAppBar(
-              170.0,
-              '',
-              Container(
-                margin: EdgeInsets.all(10.0),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    minRadius: 40.0,
-                    maxRadius: 40.0,
-                    backgroundImage: NetworkImage('https://avatars.githubusercontent.com/u/44323531?s=460&u=4a0966bc4213dfd7da98c0ca07273948bc32bfad&v=4'),
-                  ),
-                  title: Text(
-                    'Bassel Allam',
-                    style: TextStyle(color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    'View Profile',
-                    style: TextStyle(color: Colors.white54, fontSize: 20.0, fontWeight: FontWeight.normal),
+                175.0,
+                '',
+                Container(
+                  margin: EdgeInsets.all(10.0),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      minRadius: 40.0,
+                      maxRadius: 40.0,
+                      backgroundImage: NetworkImage(
+                          'https://avatars.githubusercontent.com/u/44323531?s=460&u=4a0966bc4213dfd7da98c0ca07273948bc32bfad&v=4'),
+                    ),
+                    title: Text(
+                      'Bassel Allam',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: GestureDetector(
+                      onTap: () {
+                        //Navigator.push(context,
+                        //  MaterialPageRoute(builder: context) => drprofile());
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => DrProfile()));
+                      },
+                      child: Text(
+                        'View Profile',
+                        style: TextStyle(
+                            color: Colors.white54,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              'Profile'
-            ),
+                'Profile'),
             profileItem(Icons.motorcycle, 'Medicine Delivery'),
             profileItem(Icons.favorite, 'Favourite'),
             profileItem(Icons.settings, 'Settings'),
@@ -50,6 +63,7 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+
   profileItem(IconData icon, String title) {
     return Container(
       margin: EdgeInsets.all(10.0),
